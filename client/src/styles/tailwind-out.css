@@ -453,6 +453,9 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.m-4 {
+  margin: 1rem;
+}
 .flex {
   display: flex;
 }
@@ -465,11 +468,17 @@ video {
 .h-full {
   height: 100%;
 }
+.h-10 {
+  height: 2.5rem;
+}
 .w-8\/12 {
   width: 66.666667%;
 }
 .w-full {
   width: 100%;
+}
+.w-4\/5 {
+  width: 80%;
 }
 .basis-auto {
   flex-basis: auto;
@@ -519,6 +528,10 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;

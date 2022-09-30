@@ -1,12 +1,20 @@
-export const getApiData = async <T>( fetchUrl: string, parameter: string ): Promise<T> => {
-    const res = await fetch(fetchUrl, {
-      method: "Post",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(parameter),
-    });
-  
-    return await res.json();
-  };
-  
+import axios from "axios";
+
+export const getApiData = async (
+  fetchUrl: string,
+  videoId: string
+): Promise<any> => {
+  const response = await axios({
+    method: "post",
+    url: fetchUrl,
+    headers: {
+      "Content-type": "application/json",
+    },
+    data: {
+      videoId: videoId,
+    },
+  });
+
+  console.log("response", response);
+  return response.data.link;
+};

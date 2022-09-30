@@ -36,11 +36,7 @@ const Login = () => {
 
     try {
       // make the API call
-      const res: User = await getData(
-        "http://localhost:3001/login",
-        email,
-        password
-      );
+      const res: User = await getData("/login", email, password);
       setUser(res);
       resetFormFields();
     } catch (error) {
