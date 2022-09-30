@@ -1,5 +1,6 @@
-import {Request, Response } from "express";
+import { Request, Response } from "express";
 import * as express from "express";
+import cors from "cors";
 
 export const login = express.Router();
 
@@ -31,9 +32,7 @@ login.get("/login", (req: Request, res: Response) => {
 // route login
 login.post("/login", (req: Request, res: Response) => {
     const { email, password }: FormInputs = req.body;
-    if (email && password) {
-        console.log("email and password received");
-    }
+    console.log("email and password received");
     const user = users.find((user) => {
         return user.email === email && user.password === password;
     });
