@@ -1,10 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Home from "./components/Home";
 
-const App = () => {
+const App:React.FunctionComponent = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />

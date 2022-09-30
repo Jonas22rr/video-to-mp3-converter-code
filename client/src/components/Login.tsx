@@ -1,6 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-import { ReactComponent as Logo } from "../logo.svg";
-import { getData } from "../services/getData";
+import { getData } from "../services/getLoginData";
 import FormInput from "../controllers/FormInput";
 
 // TypeScript declarations
