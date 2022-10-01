@@ -57,15 +57,6 @@ export default class ConvertMp3 extends React.Component<Props, State> {
         }
     }
 
-    getDownloadLink(): string {
-        if (this.state.downloadLink) {
-            console.log(this.state.downloadLink);
-            return this.state.downloadLink.toString();
-        } else {
-            return "";
-        }
-    }
-
     render() {
         return (
             <div className="flex items-center justify-center h-screen">
