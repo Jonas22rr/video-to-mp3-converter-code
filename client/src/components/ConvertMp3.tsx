@@ -14,12 +14,12 @@ export default class ConvertMp3 extends React.Component<Props, State> {
             downloadLink: "",
             videoId: "",
             loading: false,
+            maxConvertions: false,
         } as State;
 
         this.handleConvert = this.handleConvert.bind(this);
         this.getVideoId = this.getVideoId.bind(this);
         this.handleDownload = this.handleDownload.bind(this);
-        this.getDownloadLink = this.getDownloadLink.bind(this);
     }
 
     async handleConvert() {
@@ -30,8 +30,16 @@ export default class ConvertMp3 extends React.Component<Props, State> {
                 "/convert-mp3",
                 this.state.videoId
             );
-            console.log(response);
-            this.setState({ downloadLink: response, loading: false });
+            // TODO: check if max convertions is working when api is ready
+            if (response.toString() === "function link() { [native code] }") {
+                this.setState({ maxConvertions: true });
+            } else {
+                this.setState({
+                    downloadLink: response,
+                    maxConvertions: false,
+                });
+            }
+            this.setState({ loading: false });
         } catch (error) {
             this.setState({ downloadLink: "" });
             console.log(error);
@@ -54,6 +62,26 @@ export default class ConvertMp3 extends React.Component<Props, State> {
             });
         } else {
             this.setState({ videoId: videoId });
+        }
+    }
+
+    setDownloadProperties(): React.ReactNode {
+        if (this.state.downloadLink && this.state.loading === false) {
+            return (
+                <a href={this.state.downloadLink}>
+                    <button
+                        id="idDownloadBtn"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={this.handleDownload}
+                    >
+                        Download
+                    </button>
+                </a>
+            );
+        } else if (this.state.maxConvertions === true) {
+            return <p>Maximum conversions were reached</p>;
+        } else {
+            return null;
         }
     }
 
@@ -98,18 +126,7 @@ export default class ConvertMp3 extends React.Component<Props, State> {
                                 </>
                             )}
                         </div>
-                        {this.state.downloadLink &&
-                        this.state.loading === false ? (
-                            <a href={this.state.downloadLink}>
-                                <button
-                                    id="idDownloadBtn"
-                                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                                    onClick={this.handleDownload}
-                                >
-                                    Download
-                                </button>
-                            </a>
-                        ) : null}
+                        {this.setDownloadProperties()}
                     </div>
                 </div>
             </div>

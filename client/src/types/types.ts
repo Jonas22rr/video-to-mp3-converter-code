@@ -5,4 +5,5 @@ export interface IConvertMp3State {
     downloadLink: any;
     videoId: string;
     loading: boolean;
+    maxConvertions: boolean;
 }
