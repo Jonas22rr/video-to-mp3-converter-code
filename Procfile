@@ -1,1 +1,0 @@
-worker: node server/dist/server.js
